@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.framework.base.BaseDao">
+	<select id="getCode" resultType="String">
+	${sql}
+	</select>
+	<insert id="baseSave">
+	${sql}
+	</insert>
+	<delete id="baseParDel">
+	${sql}
+	</delete>
+	<delete id="baseLogParDel">
+	${sql}
+	</delete> 
+	<update id="baseUpdate">
+	${sql}
+	</update>
+	<select id="baseParSelect" resultType="hashmap">
+	${sql}
+	</select>
+	<select id="baseSelectEq" resultType="hashmap">
+	${sql}
+	</select>
+	<select id="baseSelectLike" resultType="hashmap">
+	${sql}
+	</select>
+	<select id="baseGetCode" resultType="String">
+	${sql}
+	</select>
+	<select id="baseSelectAll" resultType="hashmap">
+	${sql}
+	</select>
+</mapper>

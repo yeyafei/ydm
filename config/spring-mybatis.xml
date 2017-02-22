@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa" xmlns:rep="http://www.springframework.org/schema/data/repository"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/aop 
+		http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/jdbc 
+		http://www.springframework.org/schema/jdbc/spring-jdbc-4.0.xsd
+		http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+		http://www.springframework.org/schema/data/jpa 
+		http://www.springframework.org/schema/data/jpa/spring-jpa-1.3.xsd
+		http://www.springframework.org/schema/data/repository 
+		http://www.springframework.org/schema/data/repository/spring-repository.xsd"
+	default-lazy-init="false">
+	<!-- 扫描注解@Controller的类 -->
+	<!--
+		使用annotation
+		自动注册bean,并检查@Required,@Autowired的属性已被注入base-package为需要扫描的包（含所有子包）
+	-->
+	<context:component-scan base-package="com.framework.crud" />
+
+	<aop:aspectj-autoproxy proxy-target-class="true" />
+
+	<!-- Spring 和 Mybatis 进行完美整合 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="mapperLocations" value="classpath:com/framework/**/*Mapper.xml" />
+	</bean>
+
+	<!-- 扫描basePackage下所有dao接口 -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.framework" />
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
+	</bean>
+
+	<!-- 事务管理器配置, Jpa单数据源事务 -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<!-- 注解驱动 -->
+	<tx:annotation-driven transaction-manager="transactionManager"
+		proxy-target-class="true" />
+
+
+	<!-- 数据源配置 -->
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url"
+			value="jdbc:mysql://127.0.0.1:3306/mybaits_crud?useUnicode=true&amp;characterEncoding=UTF-8&amp;emptyStringsConvertToZero=true&amp;jdbcCompliantTruncation=false&amp;noDatetimeStringSync=true&amp;nullCatalogMeansCurrent=true&amp;nullNamePatternMatchesAll=true&amp;transformedBitIsBoolean=false&amp;dontTrackOpenResources=true&amp;zeroDateTimeBehavior=convertToNull&amp;useServerPrepStmts=false&amp;autoClosePStmtStreams=true&amp;processEscapeCodesForPrepStmts=false&amp;useFastDateParsing=false&amp;populateInsertRowWithDefaultValues=false&amp;useDirectRowUnpack=false" />
+		<property name="username" value="root" />
+		<property name="password" value="123456" />
+	</bean>
+</beans>
