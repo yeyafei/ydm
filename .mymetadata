@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-module
   type="WEB"
-  name="ydm"
-  id="myeclipse.1487235005781"
-  context-root="/ydm"
+  name="yyf-ydm"
+  id="myeclipse.1482307392156"
+  context-root="/mybaits-crud"
   j2ee-spec="1.4"
-  archive="ydm.war">
+  archive="yyf-ydm.war">
   <attributes>
     <attribute name="webrootdir" value="WebRoot" />
   </attributes>

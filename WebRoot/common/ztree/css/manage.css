@@ -1,0 +1,15 @@
+@CHARSET "UTF-8";
+.manage_oper{
+	margin-top: 10px;
+    border-bottom: 1px solid #617775;
+    background: #F2F2F2;
+    width: 99%;
+    height: 30px;
+    line-height: 30px;
+}
+
+.manage_oper a{
+	font-family: verdana, helvetica, arial, sans-serif !important;
+    font-size: 13px !important;
+    color: #000;
+}

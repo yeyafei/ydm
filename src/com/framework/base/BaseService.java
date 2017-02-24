@@ -109,7 +109,7 @@ public class BaseService<T extends BaseEntity, D extends BaseDao<T>> {
 
 	/**
 	 * 数据库查询操作 根据实体类的值进行绝对查询 注：无时间大小比较
-	 * 
+	 * (带分页信息)
 	 * @param t
 	 * @return list<t>
 	 * @throws Exception
@@ -126,6 +126,21 @@ public class BaseService<T extends BaseEntity, D extends BaseDao<T>> {
 		return ts;
 	}
 
+	/**
+	 * 数据库查询操作 根据实体类的值进行绝对查询 注：无时间大小比较
+	 * 查询总数量
+	 * 用于分页功能
+	 * @param t
+	 * @return
+	 * @throws Exception
+	 */
+	@SuppressWarnings("unchecked")
+	public int baseSelectEqCount(T t) throws Exception{
+		return dao.baseSelectEqCount(BaseSQL.getInstance()
+				.baseSelectEqCount(t));
+	}
+	
+	
 	/**
 	 * 数据库查询操作 查询实体类数据库所有的信息 注：有flag为0限制
 	 * 
@@ -186,6 +201,16 @@ public class BaseService<T extends BaseEntity, D extends BaseDao<T>> {
 							.substring(1);
 		}
 		return code;
+	}
+	/**
+	 * 将LIst数据转换成Json数据
+	 * @param list
+	 * @param pageNum
+	 * @param pageAllCount
+	 * @return
+	 */
+	public String getListToTableHtml(List<T> list) {
+		 return null;
 	}
 
 }

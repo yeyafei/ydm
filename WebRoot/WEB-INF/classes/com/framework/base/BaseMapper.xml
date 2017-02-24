@@ -33,4 +33,7 @@
 	<select id="baseSelectAll" resultType="hashmap">
 	${sql}
 	</select>
+	<select id="baseSelectEqCount" resultType="Integer">
+	${sql}
+	</select>
 </mapper>

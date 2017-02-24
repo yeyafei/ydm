@@ -177,7 +177,7 @@ public class BaseSQL<T extends Po> {
 
 	/**
 	 * 数据库查询操作 根据实体类的值进行绝对查询 注：无时间大小比较
-	 * 
+	 * （含有分页信息）
 	 * @param t
 	 * @return
 	 * @throws Exception
@@ -199,10 +199,44 @@ public class BaseSQL<T extends Po> {
 							+ pramList.get(i).getValue() + "' ";
 			}
 		}
+		if(t.getPageSize()!=0){
+			sql +=" ORDER BY id DESC limit "+t.getStartNum() +"," +t.getPageSize();
+		}
 		System.out.println(sql);
 		return sql;
 	}
 
+	/**
+	 * 数据库查询操作 根据实体类的值进行绝对查询 注：无时间大小比较
+	 * （含有分页信息）
+	 * @param t
+	 * @return
+	 * @throws Exception
+	 */
+	public String baseSelectEqCount(T t) throws Exception {
+		String tableName = this.sc.getTableName(t);
+		List<Pram> pramList = this.sc.getAllPramList(t);
+		String sql = "select count(*) from " + tableName + " where 1=1 ";
+		for (int i = 0; i < pramList.size(); i++) {
+			if ("id".equals(pramList.get(i).getFile().toLowerCase())) {
+				if (!"0".equals(pramList.get(i).getValue().toString()))
+					sql += "and " + pramList.get(i).getFile() + " = '"
+							+ pramList.get(i).getValue() + "' ";
+			} else {
+				if (pramList.get(i).getValue() != null
+						&& !"".equals(pramList.get(i).getValue().toString()
+								.trim()))
+					sql += "and " + pramList.get(i).getFile() + " = '"
+							+ pramList.get(i).getValue() + "' ";
+			}
+		}
+		System.out.println(sql);
+		return sql;
+	}
+	
+	
+	
+	
 	/**
 	 * 数据库查询操作 根据实体类的值进行模糊查询 注：无时间大小比较
 	 * 

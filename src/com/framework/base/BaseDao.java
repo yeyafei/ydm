@@ -29,5 +29,7 @@ public interface BaseDao<T> {
 	public String baseGetCode(@Param("sql") String sql);
 	
 	public List<Map<String,Object>> baseSelectAll(@Param("sql") String sql);
+	
+	public int baseSelectEqCount(@Param("sql") String sql);
 
 }

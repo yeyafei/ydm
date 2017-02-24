@@ -13,14 +13,6 @@ import com.framework.crud.bean.user.User;
 import com.framework.crud.service.user.UserService;
 
 /**
- * MYBAITS CRUD CONTROLLER
- * 
- * 在实体类USER上的简单的增删改查
- * 
- * 为了简洁（其实是懒）,无页面
- * 
- * 为了方便直接看出效果（其实是懒）,将实体类直接在controller中生成
- * 
  * @author yyf
  *
  */
@@ -38,7 +30,7 @@ public class UserController extends BaseController<User, UserService> {
 	public String add() {
 		try {
 			User user = new User();
-			user.setUser("name", "age", "phone", "remark");
+//			user.setUser("name", "age", "phone", "remark");
 			userService.addUser(user);
 		} catch (Exception e) {
 			//model 异常抛出操作
@@ -54,7 +46,7 @@ public class UserController extends BaseController<User, UserService> {
 	public String del() {
 		try {
 			User user = new User();
-			user.setName("name"); 
+//			user.setName("name"); 
 			userService.delUser(user);
 		} catch (Exception e) {
 			//model 异常抛出操作
@@ -70,7 +62,7 @@ public class UserController extends BaseController<User, UserService> {
 	public String update() {
 		try {
 			User user = new User();
-			user.setUser("name", "age2", "phone2", "remark2");
+//			user.setUser("name", "age2", "phone2", "remark2");
 			user.setCode("U17010001"); //code在此bean中有些特殊
 			userService.updateUser(user);
 		} catch (Exception e) {

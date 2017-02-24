@@ -9,17 +9,38 @@ import com.framework.crud.bean.user.User;
 import com.framework.crud.dao.user.UserDao;
 
 /**
- * MYBAITS CRUD SERVICE
- * 
- * 结合controller中的四个基本增删改查
- * 
- * 更多操作在BaseService
- * 
  * @author yyf
  *
  */
 @Service
 public class UserService extends BaseService<User, UserDao>{
+	
+	
+	@Override
+	public String getListToTableHtml(List<User> list) {
+		StringBuffer tableHtml = new StringBuffer();
+		String[] ths = new String[]{"序号","用户名","用户级别","激活状态","创建时间","创建人"};
+		tableHtml.append("<tr>");
+		for (String s : ths)
+			tableHtml.append("<th>" + s + "</th>");
+		tableHtml.append("</tr>");
+		for (int i = 1; i <= list.size(); i++) {
+			User user = list.get(i-1);
+			if(i % 2 != 1)
+				tableHtml.append("<tr class='colortr' xh='"+i+"' onclick='changeTrColor(this," + i + ")'>");
+			else
+				tableHtml.append("<tr class='nocolortr' xh='"+i+"' onclick='changeTrColor(this," + i + ")'>");
+			tableHtml.append("<td>"+i+ "<input type='hidden' id='NAME" + i + "' value='" + user.getName() + "' /></td>");
+			tableHtml.append("<td>" + user.getName() + "</td>");
+			tableHtml.append("<td>" + user.getLevel() + "</td>");
+			tableHtml.append("<td>" + user.getActive() + "</td>");
+			tableHtml.append("<td>" + user.getCreatDate()+ "</td>");
+			tableHtml.append("<td>" + user.getCeratOper() + "</td>");
+			tableHtml.append("</tr>");
+		}
+		return tableHtml.toString();
+	}
+	
 	
 	/**
 	 * 增加

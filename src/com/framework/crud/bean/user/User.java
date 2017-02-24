@@ -4,15 +4,8 @@ import com.framework.base.BaseEntity;
 import com.framework.core.annotation.Code;
 import com.framework.core.annotation.Primary;
 import com.framework.core.annotation.TableName;
-import com.framework.core.annotation.TempField;
 
 /**
- * @author yyf
- * 
- * 用户Bean
- * Parimary 定义的有唯一性字段
- * Code 编码字段 一般是系统在插入时生成 如 U17010001（编码头 年 月 计数字段）
- * TempField 非数据库字段（在CRUD中会将其忽略）
  * @author yyf
  * 
  */
@@ -20,7 +13,7 @@ import com.framework.core.annotation.TempField;
 @TableName(name = "user")
 public class User extends BaseEntity {
 	private int id;
-	
+
 	/**
 	 * 用户名 /唯一
 	 */
@@ -32,25 +25,46 @@ public class User extends BaseEntity {
 	@Code(name = "U")
 	@Primary
 	private String code;
-	/**
-	 * 用户年龄/非数据库字段
-	 */
-	@TempField
-	private String age;
-	/**
-	 * 用户联系方式
-	 */
-	private String phone;
-	/**
-	 * 用户备注
-	 */
-	private String remark;
 
-	public void setUser(String name, String age, String phone, String remark) {
-		this.name = name;
-		this.age = age;
-		this.phone = phone;
-		this.remark = remark;
+	/**
+	 * 用户密码
+	 */
+	private String passWord;
+
+	/**
+	 * 用户级别
+	 */
+	private String level;
+
+	/**
+	 * 激活状态
+	 */
+	private String active;
+
+	/**
+	 * 最后登陆时间
+	 */
+	private String lastLogDate;
+
+	/**
+	 * 创建时间
+	 */
+	private String creatDate;
+	/**
+	 * 创建人
+	 */
+	private String ceratOper;
+	/**
+	 * 用户角色
+	 */
+	private String userRole;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -69,42 +83,75 @@ public class User extends BaseEntity {
 		this.code = code;
 	}
 
-	public String getAge() {
-		return age;
+	public String getPassWord() {
+		return passWord;
 	}
 
-	public void setAge(String age) {
-		this.age = age;
+	public void setPassWord(String passWord) {
+		this.passWord = passWord;
 	}
 
-	public String getPhone() {
-		return phone;
+	public String getLevel() {
+		return level;
 	}
 
-	public void setPhone(String phone) {
-		this.phone = phone;
+	public void setLevel(String level) {
+		this.level = level;
 	}
 
-	public String getRemark() {
-		return remark;
+	public String getActive() {
+		return active;
 	}
 
-	public void setRemark(String remark) {
-		this.remark = remark;
+	public void setActive(String active) {
+		this.active = active;
 	}
 
-	public int getId() {
-		return id;
+	public String getLastLogDate() {
+		return lastLogDate;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setLastLogDate(String lastLogDate) {
+		this.lastLogDate = lastLogDate;
 	}
 
+	public String getCreatDate() {
+		return creatDate;
+	}
+
+	public void setCreatDate(String creatDate) {
+		this.creatDate = creatDate;
+	}
+
+	public String getCeratOper() {
+		return ceratOper;
+	}
+
+	public void setCeratOper(String ceratOper) {
+		this.ceratOper = ceratOper;
+	}
+
+	public String getUserRole() {
+		return userRole;
+	}
+
+	public void setUserRole(String userRole) {
+		this.userRole = userRole;
+	}
+	public User(){
+		
+	}
+	public User(String name){
+		this.name = name;
+	}
+	
 	@Override
 	public String toString() {
-		return "User [age=" + age + ", code=" + code + ", id=" + id + ", name="
-				+ name + ", phone=" + phone + ", remark=" + remark + "]";
+		return "User [active=" + active + ", ceratOper=" + ceratOper
+				+ ", code=" + code + ", creatDate=" + creatDate + ", id=" + id
+				+ ", lastLogDate=" + lastLogDate + ", level=" + level
+				+ ", name=" + name + ", passWord=" + passWord + ", userRole="
+				+ userRole + "]";
 	}
 
 }

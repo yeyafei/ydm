@@ -105,10 +105,7 @@ public class BaseAction{
 			String packageurl = this.getClass().getPackage().getName();
 			url = packageurl.substring(packageurl.lastIndexOf(".")+1);
 			packageurl = packageurl.replace("." + url, "");
-//			RequestMapping mapping = Reflections.getAnnotation(this.getClass(), RequestMapping.class);
-//			if(mapping!=null){
 			url = packageurl.substring(packageurl.lastIndexOf(".")+1) + "/" + url;
-//			url = packageurl+"/"+this.getClass().getSimpleName().replace("Controller", "").toLowerCase();
 			url = prefix+url;
 			if(url.contains("controller/")){
 				url=url.replace("controller/", "");

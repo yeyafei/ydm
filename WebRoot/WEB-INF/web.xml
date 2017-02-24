@@ -4,9 +4,9 @@
     xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"> 
     
 	<!-- 应用程序名称 -->
-	<display-name>ydm</display-name>
+	<display-name>mybatis_crud</display-name>
 	<!-- 应用程序描述 -->
-	<description>ydm</description>
+	<description>mybatis_crud</description>
 	
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
@@ -18,6 +18,15 @@
 			org.springframework.web.context.ContextLoaderListener
 		</listener-class>
 	</listener>
+	
+	<filter>
+        <filter-name>loginfilter</filter-name>
+        <filter-class>com.framework.interceptor.LoginFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>loginfilter</filter-name>
+        <url-pattern>/main.jsp</url-pattern>
+    </filter-mapping>
 	
 	<!-- 定义Servlet -->
 	<servlet>

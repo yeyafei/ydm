@@ -1,0 +1,342 @@
+@CHARSET "UTF-8";
+*{
+	font-family: verdana, helvetica, arial, sans-serif;
+    font-size: 12px;
+}
+
+html{
+	margin:0px;
+	padding:0px;
+}
+
+body{
+	margin-top: 5px;
+	padding: 0;
+}
+
+#bodyDiv{
+	margin: 0 10px 0 0;
+}
+
+a{
+	text-decoration: none;
+}
+
+label{
+	color: #222;
+	margin-left:5px;
+	/*font-size: 0.5em;*/
+}
+
+input[type="radio"],input[type="checkbox"]{
+    vertical-align: sub;
+}
+textarea{
+	width:138px;
+	background-color: #f2f2f2;
+	padding-left: 5px;
+}
+	
+fieldset{
+    position: relative;
+	padding: 10px 10px 5px 10px;
+	margin: 5px 5px 10px 0;
+}
+
+.pageInput {
+	width:30px;
+}
+
+.searchTerm {
+	padding: 5px;
+	background-color: #E6E6FA;
+	font-weight: bold;
+}
+
+
+
+
+.openWin{
+	margin: 20px!important;
+	padding: 3px 10px 10px 10px!important;
+}
+.openWin legend{
+	font-size: 0.7em;
+	font-weight:bold;
+}
+
+.warp{
+	background: #e7efef;
+}
+.warp{
+    padding: 10px 0 10px 10px;
+    margin-bottom: 0px!important;
+}
+.warp td{
+	line-height: 2em;
+}
+
+a.operation{
+	text-decoration: underline;
+	color: #e78210;
+}
+a.operation:hover{
+	text-decoration: none;
+	color: red;
+}
+
+.form_table{/*background:#d3dbde*/;margin-bottom: 5px;}
+.form_table th{padding: 2px 1px;text-align:right;/*background:#efefef;*/}
+.form_table td{padding: 2px 1px;/*background:#FAFAFA;*/}
+ 
+
+/*新增表单样式*/
+.fixedlen_table {
+	width:500px;
+	text-indent: 5px;
+}
+.fixedlen_table td{
+    height: 24px;
+    vertical-align: top;
+    line-height: 2.5em;
+}
+
+.operateDiv{
+	background: #e7efef;
+    width: 98%;
+/*    margin: 5px 0 0 7px;*/
+    padding: 5px 0 0 0px;
+    border-top: 1px solid #d6d3bd;
+}
+
+
+.len80{
+	width: 80px;
+}
+
+.active_a{
+	padding: 0 10px;
+	border: 1px solid #ccc;
+	background-color: #ccc;
+}
+
+.center_checkbox {
+	vertical-align: middle;
+}
+
+.input_description {
+	margin-left:8px;
+/*	line-height:30px;*/
+/* 	height:20px; */
+	overflow:hidden;
+	color:#999;
+	font-size:12px;	
+}
+
+.input_keynote {
+	margin-left:2px;
+	font-weight: bold;
+	color: #B22222;
+}
+
+label.textarea{
+    vertical-align: top;
+}
+
+DIV.tableDiv{
+    width: 100%;
+}
+
+.select{
+	width: 107px;
+	height: 20px;
+/*	padding: 1px 5px;*/
+	color: #666666;
+	background-color: #FAFAFA;
+	border: 1px solid #cccccc;
+}
+.formselect{
+	width:147px;
+}
+.formselect.twocols,.select.twocols{
+	width:187px;
+}
+.formfile{
+	height: 18px;
+    line-height: 14px;
+    color: #666666;
+    border: 1px solid #c0c0c0;
+    width: 160px;
+}
+
+
+.formInput{
+	width:140px;
+}
+.textInput.twocols{
+	width: 180px;
+}
+.min{
+	width: 80px;
+}
+
+
+#currentPage{
+	width:20px;
+	height: 16px;
+	padding: 1px 5px;
+	border: 1px solid #777;
+	border-radius: 2px;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+.textInput:focus { 
+	border-color: #66afe9; 
+	outline: 0; 
+	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6); 
+	box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6); 
+} 
+/*
+.list_table{
+	width: 100%;
+	border: 1px solid #aaa;
+	border-collapse: collapse;
+	border-width: thin;
+	text-indent: 5px;
+	font-size: 0.6em;
+}
+.list_table tr{ 
+	height: 25px;
+ 	font-family: verdana, helvetica, arial, sans-serif;
+ 	text-align: center;
+}
+.list_table tr th{
+	height: 25px;
+	background-color: #E6EEEE;
+}
+.list_table.trleft tr{
+	text-align: left;
+}*/
+.list_table{
+	width: 100%;
+	border-top: 1px solid #d3dbde;
+	border-right: 1px solid #d3dbde;
+	background:#fff;
+	text-indent: 5px;
+}
+
+.list_table td{
+	height:20px;
+	border-bottom: 1px solid #e3e3e3;
+    border-left: 1px solid #e3e3e3;
+    padding: 3px;
+    text-align:center;
+}
+.list_table td.right{
+	text-align: right;
+	padding-right: 5px;
+}
+.list_table td.left{
+	text-align: left;
+}
+.list_table td.center{
+	text-align: center;
+}
+
+.nocolortr{
+	background-color: #E6EEEE;
+}
+.colortr{
+	background-color: #FFFFFF;
+}
+
+#list_operate{
+	height: 20px;
+    FONT-SIZE: 0.6em;
+    margin:3px;
+}
+
+#list_operate ul li{
+	float:left;
+	width: 100px;
+}
+
+#list_operate a{
+	text-decoration: underline; 
+	margin-right:5px;
+	color:#000;
+}
+#list_operate a:hover{
+	text-decoration: none;
+	color:#f00;
+}
+
+#list_operate a:active{
+	color:#f00;
+}
+
+#list_operate label{
+	margin-left: -4px;
+	font-weight: bold;
+}
+
+
+
+
+#list_table_page{
+    height: 15px;
+    FONT-SIZE: 80%;
+    margin-right:-3px;
+    COLOR: #a0a0a0;
+    PADDING-TOP: 15px;
+    PADDING-BOTTOM: 10px;
+    TEXT-ALIGN: right;
+}
+#list_table_page_skip{
+    PADDING-TOP: 9px;
+    TEXT-ALIGN: right;
+    margin-left:5px;
+}
+
+#list_table_page_skip a{
+	padding: 2px 10px;
+    border-radius: 2px;
+    background-color: #ddd;
+    color:#000;
+}
+
+/*
+laypage 分页样式
+*/
+.laypage_main{
+	margin-top:-6px;
+	font-size: 0.6em;
+}
+
+.laypageskin_yahei a, .laypageskin_yahei span {
+    background-color: #ddd;
+    padding: 0;
+}
+.laypageskin_yahei a:HOVER,#list_table_page_skip a:hover{
+	background-color: #333;
+	color:#fff;
+}
+
+.red{
+	color:red;
+}
+
+.blue{
+	color:blue;
+}
+
+.green{
+	color:green;
+}
+.number_col{
+	color:#000080;
+}
+
+
+
+
