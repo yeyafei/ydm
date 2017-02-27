@@ -48,9 +48,10 @@ public class Core implements Cloneable {
 					if (Modifier.isStatic(mod) || Modifier.isFinal(mod)) {
 						continue;
 					}
-					if (field.getName().equals(k)) {
+					if (toTableString(field.getName()).equals(k)) {	//转驼峰
 						field.setAccessible(true);
 						field.set(o, v);
+						continue;
 					}
 				}
 			}
@@ -97,5 +98,24 @@ public class Core implements Cloneable {
 		}
 		return map;
 	}
+	
+	/**
+	 * 驼峰标识转下划线标识 非小写和数字加"_"
+	 * 
+	 * @param text
+	 * @return
+	 */
+	private static String toTableString(String text) {
+		String tName = text.substring(0, 1).toLowerCase();
+		for (int i = 1; i < text.length(); i++) {
+			if (!Character.isLowerCase(text.charAt(i))
+					&& !Character.isDigit(text.charAt(i))) {
+				tName += "_";
+			}
+			tName += text.substring(i, i + 1);
+		}
+		return tName.toLowerCase();
+	}
+
 
 }

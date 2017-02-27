@@ -55,11 +55,17 @@ public class ManageUtils {
 	 */
 	public static List<Module> getModuleByParentId(String parentId, List<Module> modules) {
 		List<Module> result = new ArrayList<Module>();
-
 		for(Module module : modules)
 			if(parentId.equals(module.getParentid()))
 				result.add(module);
-		
+		for(Module module2 : result){
+			List<Module> result2 = new ArrayList<Module>();
+			for(Module module : modules){
+				if(module2.getNum().equals(module.getParentid()))
+					result2.add(module);
+			}
+			module2.setList(result2);
+		}
 		return result;
 	}
 

@@ -10,12 +10,14 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.framework.base.BaseController;
 import com.framework.crud.bean.manage.Module;
+import com.framework.crud.bean.user.User;
 import com.framework.crud.service.manage.ModuleService;
 import com.framework.util.ManageUtils;
 
@@ -50,7 +52,7 @@ public class ModuleController extends BaseController<Module, ModuleService> {
 		menulist = ManageUtils.getModuleByParentId("100001", modules);
 		// }
 		String zNodes = moduleService.toJsonOfModules((List<Module>) request
-				.getSession().getAttribute("MODULES"), null);
+				.getSession().getAttribute("MODULES_ALL"), null);
 		model.addAttribute("menulist", menulist);
 		model.addAttribute("zNodes", zNodes);
 		return viewpath("modulelist");
@@ -142,8 +144,7 @@ public class ModuleController extends BaseController<Module, ModuleService> {
 					.updateActive(new Module(module.getId(), null, active));
 			if ("true".equals(flag)) {
 				// 冻结/激活 子模块
-				List<Module> list = moduleService
-						.getModuleList(new Module(num));
+				List<Module> list = moduleService.getModuleList(new Module(num));
 				for (Module md : list) {
 					if (!active.equals(md.getActive()))
 						moduleService.updateActive(new Module(md.getId(), null,
@@ -162,6 +163,31 @@ public class ModuleController extends BaseController<Module, ModuleService> {
 		}
 	}
 
+	
+	/**
+	 * 删除模块
+	 * 
+	 * @param response
+	 * @param id
+	 */
+	@RequestMapping(value = "/delete", method = { RequestMethod.POST })
+	public void delete(HttpServletRequest request, HttpServletResponse response, @RequestParam(defaultValue = "") String num) {
+		try {
+			Module module = moduleService.getModuleByNum(num);
+			List<Module> list = moduleService.getModuleList(new Module(module.getNum()));
+			if(list.size()>0){
+				throw new Exception("请先删除该模块的下级模块!");
+			}			
+			moduleService.baseParDel(new Module(module.getId()));
+
+			ajaxJson("{\"code\" : \"0\", \"msg\" : \"删除成功!\" }", response);
+			refreshCache(request);
+		} catch (Exception e) {
+			e.printStackTrace();
+			ajaxJson("{\"code\" : \"-1\", \"msg\" : \"删除失败:" + e.getMessage() + "\" }", response);
+		}
+	}
+	
 
 	/**
 	 * 获取上级模块
@@ -230,5 +256,66 @@ public class ModuleController extends BaseController<Module, ModuleService> {
 		request.getSession().setAttribute("MODULES", MODULES);
 		request.getSession().setAttribute("MODULES_ALL", MODULES_ALL);
 	}
+	
+	/**
+	 * 保存操作
+	 * @param request
+	 * @param model
+	 * @param module
+	 * @return
+	 */
+	@RequestMapping(value = "/save", method = { RequestMethod.POST })
+	public String save(HttpServletRequest request, Model model, @ModelAttribute Module module) {
+		try {
+			User user = (User) request.getSession().getAttribute("USER");
+
+			// 生成模块编号 (一级模块不用拼接上级模块的代码)
+			String parentcode = "";
+			if (!"0".equals(module.getParentid())) {
+				Module m = moduleService.getModuleByNum(module.getParentid());
+				parentcode = m.getCode();
+				module.setCode(m.getCode() + "_" + module.getCode());
+			}
+
+			if ("".equals(module.getIds())) { // 新增
+				module.setCode(StringUtils.upperCase(module.getCode()));
+				// 判断代码是否已经存在
+				if (moduleService.getModuleByCode(module.getCode()).getId()!=0) {
+					throw new Exception("模块代码已存在,无法新增!");
+				}
+
+				module.setNum(moduleService.getNum(module));
+				module.setCreateOper(user.getName());
+			} else { // 修改
+				module.setId(Integer.parseInt(module.getIds()));
+				// 判断代码是否已经存在
+				Module module2 =moduleService.getModuleByCode(module.getCode());
+				if (module2.getId()!=0&&module2.getCode()!=module2.getCode()) {
+					throw new Exception("模块代码已存在,无法修改!");
+				}
+			}
+			moduleService.saveOrUpdate(module);
+
+			if (module.getId() == 0)
+				module = moduleService.getModuleByNum(module.getNum());
+
+			model.addAttribute("msg", "[ 操作成功 ]");
+			if (StringUtils.isNotBlank(parentcode)) {
+				module.setCode(module.getCode().replace(parentcode + "_", ""));
+			}
+			//model.addAttribute("module", module);
+			//model.addAttribute("ifoper", "true");
+
+			// 刷新缓存
+			refreshCache(request);
+		} catch (Exception e) {
+			e.printStackTrace();
+			model.addAttribute("errormsg", "[ " + e.getMessage() + "! ]");
+		}
+		model.addAttribute("module", module);
+		return viewpath("moduleedit");
+	}
+	
+	
 
 }

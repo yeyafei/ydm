@@ -4,7 +4,7 @@
 	<head></head>
 	<body>
 		<script type="text/javascript">
-			parent.window.document.location.href='/main.jsp';
+			parent.window.document.location.href='/login.jsp';
 	 	</script>
 	</body>
 </html>

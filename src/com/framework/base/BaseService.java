@@ -103,7 +103,8 @@ public class BaseService<T extends BaseEntity, D extends BaseDao<T>> {
 	@SuppressWarnings("unchecked")
 	public T baseParSelect(T t) throws Exception {
 		Map map = dao.baseParSelect(BaseSQL.getInstance().baseParSelect(t));
-		t = (T) Core.M2P(map, t);
+		if (map!=null)
+			t = (T) Core.M2P(map, t);
 		return t;
 	}
 

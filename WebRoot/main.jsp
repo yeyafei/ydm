@@ -19,7 +19,23 @@
 	<!-- 加载js文件-->
 	<script type="text/javascript" src="common/layui/layui.js"></script> 
 	<script type="text/javascript" src="admin/js/yyf.js"></script>
-	<script type="text/javascript" src="admin/js/index.js"></script>
+	<script type="text/javascript" src="admin/js/index.js"></script>	
+	<script src="admin/js/jquery-1.8.0.min.js"></script>
+	<script type="text/javascript" src="admin/js/clock.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			$("#clock").drawClock(
+				//{
+					// hCol: 'xxx',// 时针颜色
+					// mCol: 'xxx', // 时针颜色
+					// sCol: 'xxx', // 时针颜色
+					// isNumCol: 'xxx', // 数字所在的点颜色
+					// noNumCol: 'xxx', // 非数字所在的点颜色
+					// dCol: 'xxx', // 中心圈颜色
+				//}
+			);
+		})
+	</script>
 </head>
 <body>
 <div class="layui-layout layui-layout-admin" id="layui_layout">
@@ -28,11 +44,13 @@
 		<div class="layui-main">
 		    <!-- logo区域 -->
 			<div class="admin-logo-box">
-				<a class="logo" href="http://www.kuxuebao.net" title="logo"><img src="common/images/yyf.png" alt=""></a>
+				<a class="logo" href="" title="logo"><img src="common/images/yyf.png" alt=""></a>
 				<div class="yyf-side-menu">
 					<i class="fa fa-bars" aria-hidden="true"></i>
 				</div>
 			</div>
+			
+			
             <!-- 顶级菜单区域 -->
             <div class="layui-yyf-menu">
                  <ul class="layui-nav clearfix">
@@ -47,7 +65,7 @@
             <!-- 右侧导航 -->
             <ul class="layui-nav yyf-header-item">
 					<li class="layui-nav-item">
-						<a href="login.html">
+						<a href="loginout.do">
                         <i class="iconfont icon-exit"></i>
 						退出</a>
 					</li>
@@ -57,6 +75,12 @@
 	<!-- 左侧侧边导航开始 -->
 	<div class="layui-side layui-side-bg layui-yyf-side" id="yyf-side">
         <div class="layui-side-scroll" id="yyf-nav-side" lay-filter="side">
+        <div class="user-photo">
+			<a class="img">
+			<canvas id="clock" width="120" height="120"></canvas>
+			</a>
+			<!-- <p>${USER.name }</p> -->
+		</div>
 		<!-- 左侧菜单 -->
 		<ul class="layui-nav layui-nav-tree">
 			<li class="layui-nav-item layui-this">
@@ -65,110 +89,25 @@
 					<span>后台首页</span>
 				</a>
 			</li>
-			<!-- 个人信息 -->
-			<li class="layui-nav-item">
-				<a href="javascript:;">
-					<i class="layui-icon" style="font-size: 30px; color: #1E9FFF;">&#xe609;</i>
-					<span>我的面板</span>
-					<em class="layui-nav-more"></em>
-				</a>
-				<dl class="layui-nav-child">
-                    <dd>
-                        <a href="javascript:;" data-url="admin/personInfo.html">
-                          <i class="layui-icon" style="font-size: 30px; color: #1E9FFF;">&#xe609;</i>
-                            <span>个人信息</span>
-                        </a>
-                    </dd>
-                    <dd>
-                        <a href="javascript:;" data-url="changepwd.html">
-                           <i class="layui-icon" style="font-size: 30px; color: #1E9FFF;">&#xe609;</i>
-                            <span>修改密码</span>
-                        </a>
-                    </dd>
-                    <dd>
-                        <a href="javascript:;" data-url="myloginfo.html">
-                            <i class="layui-icon" style="font-size: 30px; color: #1E9FFF;">&#xe609;</i>
-                            <span>日志信息</span>
-                        </a>
-                    </dd>
-                </dl>
-			</li>
-			<!-- 用户管理 -->
-			<li class="layui-nav-item">
-					<a href="javascript:;">
-					   <i class="layui-icon" style="font-size: 30px; color: #1E9FFF;">&#xe609;</i>
-					   <span>用户管理</span>
-					   <em class="layui-nav-more"></em>
-					</a>
-					    <dl class="layui-nav-child">
-					    	<dd>
-					    		<a href="javascript:;" data-url="user/viewuserlist.do">
-					    		  <i class="layui-icon" style="font-size: 30px; color: #1E9FFF;">&#xe609;</i>
-					    		   <span>用户列表</span>
-					    		</a>
-					    	</dd>
-					    	<dd>
-					    		<a href="javascript:;">
-					    		  <i class="layui-icon" style="font-size: 30px; color: #1E9FFF;">&#xe609;</i>
-					    		   <span>角色列表</span>
-					    		</a>
-					    	</dd>
-					    	<dd>
-					    		<a href="javascript:;" data-url="module/get.do">
-					    		   <i class="layui-icon" style="font-size: 30px; color: #1E9FFF;">&#xe609;</i>
-					    		   <span>菜单管理</span>
-					    		</a>
-					    	</dd>
-					    </dl>
-			    </li>
-				
-			<!-- 系统设置 -->
-			<li class="layui-nav-item">
-					<a href="javascript:;">
-					  <i class="layui-icon" style="font-size: 30px; color: #1E9FFF;">&#xe609;</i>
-					   <span>系统设置</span>
-					   <em class="layui-nav-more"></em>
-					</a>
-					    <dl class="layui-nav-child">
-					    	<dd>
-					    		<a href="javascript:;">
-					    		   <i class="layui-icon" style="font-size: 30px; color: #1E9FFF;">&#xe609;</i>
-					    		   <span>基本参数设置</span>
-					    		</a>
-					    	</dd>
-					    	<dd>
-					    		<a href="javascript:;">
-					    		   <i class="layui-icon" style="font-size: 30px; color: #1E9FFF;">&#xe609;</i>
-					    		   <span>多站点管理</span>
-					    		</a>
-					    	</dd>
-					    	<dd>
-					    		<a href="javascript:;">
-					    		  <i class="layui-icon" style="font-size: 30px; color: #1E9FFF;">&#xe609;</i>
-					    		   <span>安全设置</span>
-					    		</a>
-					    	</dd>
-					    	<dd>
-					    		<a href="javascript:;">
-					    		   <i class="iconfont icon-iconfuzhi01" data-icon='icon-iconfuzhi01'></i>
-					    		   <span>系统日志管理</span>
-					    		</a>
-					    	</dd>
-					    	<dd>
-					    		<a href="javascript:;">
-					    			<i class="layui-icon" style="font-size: 30px; color: #1E9FFF;">&#xe609;</i>
-					    			<span>SQL命令行工具</span>
-					    		</a>
-					    	</dd>
-					    </dl>
-				</li>
-				<!-- 友链设置 -->
+			<c:forEach items="${FRISTMENU}" var="menu" >
 				<li class="layui-nav-item">
 					<a href="javascript:;">
-					   <i class="layui-icon" style="font-size: 30px; color: #1E9FFF;">&#xe609;</i>
-					   <span>友情链接</span>
+						<i class="layui-icon" style="font-size: 30px; color: #1E9FFF;">&#xe609;</i>
+						<span>${menu.description }</span>
+						<em class="layui-nav-more"></em>
 					</a>
+					<dl class="layui-nav-child">
+					<c:forEach items="${menu.list}" var="menul" >
+					  	<dd>
+                        <a href="javascript:;" data-url="${menul.url}">
+                          <i class="layui-icon" style="font-size: 30px; color: #1E9FFF;">&#xe609;</i>
+                            <span>${menul.description}</span>
+                        </a>
+                    	</dd>
+					</c:forEach>
+					</dl>
 				</li>
+	  		</c:forEach>
 		</ul>
 	    </div>
 	</div>
@@ -191,7 +130,7 @@
 	</div>
 	<!-- 底部区域 -->
 	<div class="layui-footer layui-yyf-foot" id="yyf-footer">
-		<div class="layui-mian">
+ 	<div class="layui-mian">
 		    <div class="yyf-footer-left">
 		    	 查看:<a href="http://www.qinshouwei.com" title="">作者信息</a>
 		    </div>

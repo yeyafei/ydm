@@ -170,7 +170,7 @@
 		});
 	}
 
-	//添加模块
+	//修改
 	function upd() {
 		var moduleid = $("#moduleid").val();
 		if (moduleid == '') {

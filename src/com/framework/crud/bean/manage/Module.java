@@ -1,8 +1,11 @@
 package com.framework.crud.bean.manage;
 
+import java.util.List;
+
 import com.framework.base.BaseEntity;
 import com.framework.core.annotation.Primary;
 import com.framework.core.annotation.TableName;
+import com.framework.core.annotation.TempField;
 
 /**
  * 功能模块
@@ -16,6 +19,8 @@ public class Module extends BaseEntity{
 	 * 主键ID
 	 */
 	private int id;
+	@TempField
+	private String ids;
 	
 	/**
 	 * 模块编码
@@ -26,6 +31,7 @@ public class Module extends BaseEntity{
 	/**
 	 * 模块编码
 	 */
+	@Primary
 	private String code;
 	
 	/**
@@ -56,12 +62,14 @@ public class Module extends BaseEntity{
 	/**
 	 * 创建人
 	 */
-	private String create_oper;
+	private String createOper;
 	
 	/**
 	 * 创建时间
 	 */
-	private String create_date;
+	private String createDate;
+	@TempField
+	private List<Module> list;
 	
 	public boolean equals(Object obj) {
 		Module m = null;
@@ -159,19 +167,37 @@ public class Module extends BaseEntity{
 		this.num = num;
 	}
 
-	public String getCreate_oper() {
-		return create_oper;
+	public String getCreateOper() {
+		return createOper;
 	}
 
-	public void setCreate_oper(String createOper) {
-		create_oper = createOper;
+	public void setCreateOper(String createOper) {
+		this.createOper = createOper;
 	}
 
-	public String getCreate_date() {
-		return create_date;
+	public String getCreateDate() {
+		return createDate;
 	}
 
-	public void setCreate_date(String createDate) {
-		create_date = createDate;
+	public void setCreateDate(String createDate) {
+		this.createDate = createDate;
 	}
+
+	public String getIds() {
+		return ids;
+	}
+
+	public void setIds(String ids) {
+		this.ids = ids;
+	}
+
+	public List<Module> getList() {
+		return list;
+	}
+
+	public void setList(List<Module> list) {
+		this.list = list;
+	}
+	
+
 }

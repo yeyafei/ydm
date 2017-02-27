@@ -3,8 +3,26 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+	<script src="admin/js/jquery-1.8.0.min.js"></script>
+	<script type="text/javascript" src="admin/js/clock.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			$("#clock").drawClock(
+				//{
+					// hCol: 'xxx',// 时针颜色
+					// mCol: 'xxx', // 时针颜色
+					// sCol: 'xxx', // 时针颜色
+					// isNumCol: 'xxx', // 数字所在的点颜色
+					// noNumCol: 'xxx', // 非数字所在的点颜色
+					// dCol: 'xxx', // 中心圈颜色
+				//}
+			);
+		})
+	</script>
 </head>
 <body>
-hhhhhhhhhhhhhhhh
+	<div >
+		<canvas id="clock" width="100" height="100"></canvas>
+	</div>
 </body>
 </html>

@@ -99,7 +99,7 @@
 	margin-right: 0px;
 }
 .header ul.yyf-header-item .userimg{
-	width: 40px;
+	width: 100px;
 	border-radius: 50%;
 	-webkit-border-radius: 50%;
 	-moz-border-radius: 50%;
@@ -122,15 +122,15 @@
 	padding: 0px;
 }
 .layui-yyf-side .user-photo{
-	width: 200px;
+	width: 180px;
 	height: 120px;
-	padding-top: 15px;
+	padding-top: 10px;
 	padding-bottom: 5px;
 }
 .layui-yyf-side  .user-photo a.img{
     display: block;
-    width: 76px;
-    height: 76px;
+    width: 100px;
+    height: 100px;
     margin: 0 auto;
     margin-bottom: 15px;
 }

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.framework.base.BaseService;
 import com.framework.crud.bean.manage.Module;
 import com.framework.crud.dao.manage.ModuleDao;
+import com.framework.util.DateUtils;
 
 /**
  * @author yyf
@@ -73,6 +74,18 @@ public class ModuleService extends BaseService<Module, ModuleDao> {
 		module.setNum(num);
 		return baseParSelect(module);
 	}
+	
+	/**
+	 * 根据code获取module
+	 * @param code
+	 * @return
+	 * @throws Exception
+	 */
+	public Module getModuleByCode(String code) throws Exception  {
+		Module module = new Module(code);
+		module.setCode(code);
+		return baseParSelect(module);
+	}
 
 	/**
 	 * 获取子模块
@@ -93,5 +106,53 @@ public class ModuleService extends BaseService<Module, ModuleDao> {
 		baseUpdate(module);
 		
 	}
+
+	/**
+	 * 生成模块编号
+	 * 
+	 * @param module
+	 * @return
+	 * @throws Exception 
+	 */
+	public String getNum(Module module) throws Exception {
+		int count = getModuleList(new Module(module.getParentid())).size();
+		if ("0".equals(module.getParentid())) {
+			return (count + 1) * 1000 + "";
+		} else {
+			if (count < 10) {
+				return module.getParentid() + "0" + (count + 1);
+			} else {
+				return module.getParentid() + (count + 1);
+			}
+		}
+	}
+
+	/**
+	 * 获取module
+	 * @param module
+	 * @return
+	 * @throws Exception
+	 */
+	public Module getModule(Module module) throws Exception {
+		return baseParSelect(module);
+	}
+
+	/**
+	 * 保存或者修改
+	 * @param module
+	 * @throws Exception 
+	 */
+	public void saveOrUpdate(Module module) throws Exception {
+		if (module.getId() == 0) {
+			module.setCreateDate(DateUtils.getStringDateShort());
+			baseSave(module);
+		} else {
+			baseUpdate(module);
+		}
+		
+	}
+
+
+
 
 }
