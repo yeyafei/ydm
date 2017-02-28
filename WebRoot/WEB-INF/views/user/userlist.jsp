@@ -41,10 +41,11 @@
 							<input type="hidden" id="pageNum" name="pageNum" value="1"/>
 							<input type="hidden" id="xh" value="" />
 							<input type="hidden" id="name" value="" />
+							<input type="hidden" id="parentid" name="parentid" value="${parentid }" />
 	 						<table class="layui-table" >
 								<tr>
 									<td><label>用户名&nbsp;</label></td>
-									<td><input type="text" name="name" value="" class="textInput"/></td>
+									<td><input type="text" name="name" value="" class="textInput" /></td>
 					                <td><label>用户级别&nbsp;</label></td>
 						            <td><input type="text" name="status" value="" class="textInput"/></td>
 						            <td><input type="button" id="searchFormButton" class="layui-btn layui-btn-small"  value="查 询"/>
@@ -56,10 +57,7 @@
 				</fieldset>
 				<fieldset>
 					<div id="list_operate">
-						<label>操作：</label>
-						<input type="button"  class="layui-btn layui-btn-mini" onclick="javascript:add()"  value="新增"/>
-						<input type="button"  class="layui-btn layui-btn-mini" onclick="javascript:add()"  value="修改"/>
-						<input type="button"  class="layui-btn layui-btn-mini" onclick="javascript:add()"  value="删除"/>
+					
 					</div>
 					<div id="list_table">
 					</div>

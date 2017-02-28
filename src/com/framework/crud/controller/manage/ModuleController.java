@@ -20,6 +20,7 @@ import com.framework.crud.bean.manage.Module;
 import com.framework.crud.bean.user.User;
 import com.framework.crud.service.manage.ModuleService;
 import com.framework.util.ManageUtils;
+import com.framework.util.SystemUtilities;
 
 /**
  * 模块管理
@@ -48,9 +49,9 @@ public class ModuleController extends BaseController<Module, ModuleService> {
 		List<Module> modules = (List<Module>) request.getSession()
 				.getAttribute("MODULES_ALL");
 		List<Module> menulist = null;
-		// if (SystemUtilities.isNotNullString(num)) {
-		menulist = ManageUtils.getModuleByParentId("100001", modules);
-		// }
+		 if (SystemUtilities.isNotNullString(num)) {
+		menulist = ManageUtils.getModuleByParentId(num, modules);
+		 }
 		String zNodes = moduleService.toJsonOfModules((List<Module>) request
 				.getSession().getAttribute("MODULES_ALL"), null);
 		model.addAttribute("menulist", menulist);
@@ -249,8 +250,8 @@ public class ModuleController extends BaseController<Module, ModuleService> {
 	 * @throws Exception
 	 */
 	public void refreshCache(HttpServletRequest request) throws Exception {
-		List<Module> MODULES = moduleService.getModules(false);
-		List<Module> MODULES_ALL = moduleService.getModules(true);
+		List<Module> MODULES = moduleService.getModules(true);
+		List<Module> MODULES_ALL = moduleService.getModules(false);
 		List<Module> fristMenu = ManageUtils.getModuleByParentId("0", MODULES);
 		request.getSession().setAttribute("FRISTMENU", fristMenu);
 		request.getSession().setAttribute("MODULES", MODULES);

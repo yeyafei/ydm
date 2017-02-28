@@ -25,14 +25,6 @@
 	<script type="text/javascript">
 		$(function() {
 			$("#clock").drawClock(
-				//{
-					// hCol: 'xxx',// 时针颜色
-					// mCol: 'xxx', // 时针颜色
-					// sCol: 'xxx', // 时针颜色
-					// isNumCol: 'xxx', // 数字所在的点颜色
-					// noNumCol: 'xxx', // 非数字所在的点颜色
-					// dCol: 'xxx', // 中心圈颜色
-				//}
 			);
 		})
 	</script>
@@ -99,7 +91,7 @@
 					<dl class="layui-nav-child">
 					<c:forEach items="${menu.list}" var="menul" >
 					  	<dd>
-                        <a href="javascript:;" data-url="${menul.url}">
+                        <a href="javascript:;" data-url="${menul.url}?num=${menul.num}">
                           <i class="layui-icon" style="font-size: 30px; color: #1E9FFF;">&#xe609;</i>
                             <span>${menul.description}</span>
                         </a>
@@ -131,10 +123,10 @@
 	<!-- 底部区域 -->
 	<div class="layui-footer layui-yyf-foot" id="yyf-footer">
  	<div class="layui-mian">
-		    <div class="yyf-footer-left">
-		    	 查看:<a href="http://www.qinshouwei.com" title="">作者信息</a>
+		    <div class="yyf-footer-left" style="text-align: center;">
+		    	 查看:<a href="http://yeyafei.github.io" title="">作者信息</a>
 		    </div>
-		    <p class="p-admin">
+		    <p  style="text-align: center;">
 		    	<span>2017 &copy;</span>
 		    	Write by yyf
 		    </p>

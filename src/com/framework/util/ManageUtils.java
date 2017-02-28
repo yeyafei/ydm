@@ -33,11 +33,11 @@ public class ManageUtils {
 			s.append(",\"operate\": \"");
 			s.append("<label>操作：</label>");
 			for(Module module : menulist){
-				if(module.getCode().indexOf("SELPO") > -1){
-					s.append("<select id='" + module.getCode() + "' class='select' style='margin-top:-5px;'></select>");
-				}else{
-					s.append("<a href='javascript:" + module.getUrl() + "' id='" + module.getCode() + "'>" + module.getDescription() + "</a>");	
-				}
+//				if(module.getCode().indexOf("SELPO") > -1){
+//					s.append("<select id='" + module.getCode() + "' class='select' style='margin-top:-5px;'></select>");
+//				}else{
+					s.append("<input type='button'  class='layui-btn layui-btn-mini' onclick='javascript:"+ module.getUrl()+ "' value='"+ module.getDescription()+"'/>");
+//				}
 			}
 			String menu ="menu";
 			s.append("<label id='"+menu+"'></label>");

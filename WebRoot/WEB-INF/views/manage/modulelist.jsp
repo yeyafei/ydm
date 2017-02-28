@@ -259,7 +259,6 @@
 					<c:forEach var="menu" items="${menulist}">
 					<input type="button"  class="layui-btn layui-btn-mini" id="${menu.code }" onclick="javascript:${menu.url }"  value="${menu.description}"/>
 					</c:forEach>
-					<input type="button"  class="layui-btn layui-btn-mini" id="MANAGE_MODULE_ACTIVE" onclick="javascript:active()"  value="激活"/>
 				</div>
 			</c:if>
 			<ul id="tree" class="ztree" style="width: 99%; height: 500px;"></ul>
