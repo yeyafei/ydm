@@ -304,8 +304,8 @@ public class ModuleController extends BaseController<Module, ModuleService> {
 			if (StringUtils.isNotBlank(parentcode)) {
 				module.setCode(module.getCode().replace(parentcode + "_", ""));
 			}
-			//model.addAttribute("module", module);
-			//model.addAttribute("ifoper", "true");
+			model.addAttribute("module", module);
+			model.addAttribute("ifoper", "true");
 
 			// 刷新缓存
 			refreshCache(request);

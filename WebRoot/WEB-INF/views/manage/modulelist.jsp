@@ -163,7 +163,7 @@
 	parent.layer.open( {
 			type : 2,
 			title : false,
-			shadeClose : true,
+			shadeClose : false,
 			shade : 0.8,
 			area : [ '600px', '500px' ],
 			content : '/module/edit.do'
@@ -182,8 +182,8 @@
 		}
 		parent.layer.open( {
 			type : 2,
-			title : '模块操作',
-			shadeClose : true,
+			title : false,
+			shadeClose : false,
 			shade : 0.8,
 			area : [ '600px', '500px' ],
 			content : '/module/edit.do?id=' + moduleid

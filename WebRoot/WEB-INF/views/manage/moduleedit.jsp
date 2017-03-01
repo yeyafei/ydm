@@ -8,6 +8,25 @@
 		<title>模块管理</title>
 		<jsp:include page="../../../default.jsp" />
 		<script type="text/javascript">
+		function test(){
+			alert("1")
+			}
+		function changeicon(){
+			parent.layer.open( {
+				type : 2,
+				title : '选择图标',
+				shadeClose : false,
+				shade : 0.1,
+				area : [ '800px', '580px' ],
+				content : '/icon.html',
+                success: function(layero, index){  
+              },
+              end:function(){
+                  $("#icon").val(parent.$("#icon").val())
+                }
+			});
+			}
+		
 		function tx(){
 			if("${module}"!=""){
   				$("#tbn").text("修改");
@@ -83,7 +102,8 @@
 	//关闭窗口	
 	function closeWin(){
 		var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
-		//if("${ifoper}" == 'true')
+		if("${ifoper}" == 'true')
+			parent.location.reload();
 		//	parent.iframeName.window.refresh(); //刷新父页面
 		parent.layer.close(index);
 
@@ -174,6 +194,15 @@
 							</tr>
 							<tr>
 								<th align="right">
+									<label>图标:</label>
+								</th>
+								<td>
+									<input type="text" name="icon" id="icon"  placeholder="一二级菜单选择" onClick="changeicon()"  value="${module.icon }"
+										class="layui-input" />
+								</td>
+							</tr>
+							<tr>
+								<th align="right">
 									<label>级别:</label>
 								</th>
 								<td>
@@ -200,7 +229,7 @@
 									<label>URL:</label>
 								</th>
 								<td>
-									<input type="text" name="url" value="${module.url }"
+									<input type="text" id="url" name="url" value="${module.url }"
 										class="layui-input" />
 								</td>
 							</tr>

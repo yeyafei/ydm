@@ -25,6 +25,14 @@
 	<script type="text/javascript">
 		$(function() {
 			$("#clock").drawClock(
+					{
+						 hCol: '#1AA094',// 时针颜色
+						 mCol: '#1AA094', // 时针颜色
+						 sCol: '#1AA094', // 时针颜色
+						 isNumCol: '', // 数字所在的点颜色
+						 noNumCol: '', // 非数字所在的点颜色
+						 dCol: '', // 中心圈颜色
+					}
 			);
 		})
 	</script>
@@ -84,7 +92,7 @@
 			<c:forEach items="${FRISTMENU}" var="menu" >
 				<li class="layui-nav-item">
 					<a href="javascript:;">
-						<i class="layui-icon" style="font-size: 30px; color: #1E9FFF;">&#xe609;</i>
+						<i class="layui-icon" style="font-size: 30px; color: #1E9FFF;">&#${menu.icon}</i>
 						<span>${menu.description }</span>
 						<em class="layui-nav-more"></em>
 					</a>
@@ -92,7 +100,8 @@
 					<c:forEach items="${menu.list}" var="menul" >
 					  	<dd>
                         <a href="javascript:;" data-url="${menul.url}?num=${menul.num}">
-                          <i class="layui-icon" style="font-size: 30px; color: #1E9FFF;">&#xe609;</i>
+                          <i class="layui-icon" style="font-size: 25px; color: #1E9FFF;">&#${menul.icon}</i>
+                        <!--   <i class="layui-icon" style="font-size: 25px; color: #1E9FFF;">&#xe609;</i> --> 
                             <span>${menul.description}</span>
                         </a>
                     	</dd>
@@ -113,7 +122,8 @@
 			</ul>
 			<div class="layui-tab-content" style="min-height: 150px; ">
 				<div class="layui-tab-item layui-show">
-					<iframe class="yyf-iframe" data-id='0' src="main.html"></iframe>
+					<input type="hidden" id="icon" value=""><!-- 控制子frame菜单管理添加修改的icon回掉 -->
+					<iframe class="yyf-iframe" name ="iframeName" "data-id='0' src="main.html"></iframe>
 				</div>
 			</div>
 		</div>
@@ -134,12 +144,5 @@
 	</div>
 </div>
 
-
-<!-- 菜单控件 -->
-<!-- <div class="yyf-tab-menu">
-	<span class="layui-btn yyf-test">刷新</span>
-</div> -->
-<!-- iframe框架刷新操作 -->
-<!-- <div id="refresh_iframe" class="layui-btn refresh_iframe">刷新</div> -->
 </body>
 </html>

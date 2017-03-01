@@ -60,8 +60,7 @@ public class BaseController<T extends BaseEntity, S extends BaseService> extends
 		if (list == null || list.size() == 0) {
 			tableHtml.append("<div class='notRecord'>没有记录!</div>");
 		} else {
-			tableHtml.append("<table width='100%' border='0' cellpadding='0' cellspacing='0' class='layui-table'>");
-//			tableHtml.append("<table width='100%' border='0' cellpadding='0' cellspacing='0' class='list_table'>");
+			tableHtml.append("<table class='layui-table'>");
 			tableHtml.append(Service.getListToTableHtml(list));
 			tableHtml.append("</table>");
 		}
@@ -69,6 +68,5 @@ public class BaseController<T extends BaseEntity, S extends BaseService> extends
 		result.append(tableHtml);
 		result.append("\",\"pageNum\" : \"" + pageNum + "\",\"pageAllCount\":\"" + pageAllCount + "\"");
 		return ManageUtils.splitMenu(result, menulist,list.size());
-//		return result.toString();
 	}
 }

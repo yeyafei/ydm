@@ -68,6 +68,12 @@ public class Module extends BaseEntity{
 	 * 创建时间
 	 */
 	private String createDate;
+	
+	/**
+	 * 图标
+	 */
+	private String icon ;
+	
 	@TempField
 	private List<Module> list;
 	
@@ -197,6 +203,14 @@ public class Module extends BaseEntity{
 
 	public void setList(List<Module> list) {
 		this.list = list;
+	}
+
+	public String getIcon() {
+		return icon;
+	}
+
+	public void setIcon(String icon) {
+		this.icon = icon;
 	}
 	
 
