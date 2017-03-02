@@ -12,12 +12,17 @@
 		<link rel="stylesheet"
 			href="../../../common/ztree/css/zTreeStyle/zTreeStyle.css"
 			type="text/css">
+			
 		<script type="text/javascript"
 			src="../../../common/ztree/js/jquery-1.4.4.min.js"></script>
 		<script type="text/javascript"
 			src="../../../common/ztree/js/jquery.ztree.core.js"></script>
 			<link rel="stylesheet" type="text/css" href="../../../common/layui/css/layui.css" media="all">
+			<script type="text/javascript" src="../../../common/layui/layui.js"></script> 
+				<script type="text/javascript" src="../../../admin/js/index.js"></script>	
+			<!--  <script type="text/javascript" src="../../../admin/layer/layer.js"></script>-->
 		<script type="text/javascript">
+		
 		
 	var setting = {
 		view : {
@@ -160,7 +165,7 @@
 
 	//添加模块
 	function add() {
-	parent.layer.open( {
+		layer.open( {
 			type : 2,
 			title : false,
 			shadeClose : false,
@@ -180,7 +185,7 @@
 			});
 			return;
 		}
-		parent.layer.open( {
+		layer.open( {
 			type : 2,
 			title : false,
 			shadeClose : false,
@@ -252,6 +257,7 @@
 	</head>
 	<body>
 		<div id="bodyDiv">
+			<input type="hidden" id="icon" value=""><!-- 控制子frame菜单管理添加修改的icon回掉 -->
 			<c:if test="${menulist ne null}">
 				<div class="manage_oper">
 					<span><b>操作:</b>

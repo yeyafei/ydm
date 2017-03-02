@@ -35,6 +35,10 @@
 					}
 			);
 		})
+		
+	function searchPage(page){
+		alert("1111")
+	}
 	</script>
 </head>
 <body>
@@ -122,8 +126,7 @@
 			</ul>
 			<div class="layui-tab-content" style="min-height: 150px; ">
 				<div class="layui-tab-item layui-show">
-					<input type="hidden" id="icon" value=""><!-- 控制子frame菜单管理添加修改的icon回掉 -->
-					<iframe class="yyf-iframe" name ="iframeName" "data-id='0' src="main.html"></iframe>
+					<iframe class="yyf-iframe" id="iframe" name ="iframeName" "data-id='0' src="main.html"></iframe>
 				</div>
 			</div>
 		</div>

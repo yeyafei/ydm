@@ -8,9 +8,6 @@
 		<title>模块管理</title>
 		<jsp:include page="../../../default.jsp" />
 		<script type="text/javascript">
-		function test(){
-			alert("1")
-			}
 		function changeicon(){
 			parent.layer.open( {
 				type : 2,
@@ -27,18 +24,27 @@
 			});
 			}
 		
-		function tx(){
-			if("${module}"!=""){
-  				$("#tbn").text("修改");
-				}
-			}
-		layui.use('form', function(){
+	//	layui.use('form', function(){
+	//		var form = layui.form();
+	//		form.on('select(level)', function(data){
+	//			getParent(data,form);			
+	//		});
+	//		form.on('select(parent)', function(data){
+	//			setParent(data);
+	//			});		
+			  //监听提交
+	//		 form.on('submit(formDemo)', function(data){
+	//		    $("#moduleForm").submit();
+	//		    return false;
+	//		  });
+	//		});
+
+	$(function(){
+	layui.use('form', function(){
 			var form = layui.form();
 			form.on('select(level)', function(data){
 				getParent(data,form);
-				
 			});
-
 			form.on('select(parent)', function(data){
 				setParent(data);
 				});
@@ -48,12 +54,11 @@
 			    $("#moduleForm").submit();
 			    return false;
 			  });
+			});	
 
-	
-			});
-
-	$(function(){
-		tx()
+		if("${module}"!=""){
+			$("#tbn").text("修改");
+		}	
 		var moduleid= $("#id").val();
 		if(moduleid != ''){
 			var active = "${module.active}";
@@ -102,9 +107,9 @@
 	//关闭窗口	
 	function closeWin(){
 		var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
-		if("${ifoper}" == 'true')
+		if("${ifoper}" == 'true'){
 			parent.location.reload();
-		//	parent.iframeName.window.refresh(); //刷新父页面
+		}
 		parent.layer.close(index);
 
 	}
@@ -156,9 +161,6 @@
 	<body>
 		<div>
 			<fieldset class="openWin">
-				<!--  <legend>
-					模块${module eq null ? '新增' : '修改'}
-				</legend>-->
 				<div class="warp">
 					<form id ="moduleForm" class="layui-form" action="/module/save.do" method="POST">
 						<input type="hidden" id="id" name="ids"
