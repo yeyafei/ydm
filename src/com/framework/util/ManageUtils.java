@@ -1,7 +1,6 @@
 package com.framework.util;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -31,13 +30,9 @@ public class ManageUtils {
 			s.append(",\"operate\": \"\" }");
 		}else{
 			s.append(",\"operate\": \"");
-			s.append("<label>操作：</label>");
+			s.append("<input type='button'  class='layui-btn layui-btn-mini layui-btn-warm'  value='操作:'/>");
 			for(Module module : menulist){
-//				if(module.getCode().indexOf("SELPO") > -1){
-//					s.append("<select id='" + module.getCode() + "' class='select' style='margin-top:-5px;'></select>");
-//				}else{
-					s.append("<input type='button'  class='layui-btn layui-btn-mini' onclick='javascript:"+ module.getUrl()+ "' value='"+ module.getDescription()+"'/>");
-//				}
+				s.append("<input type='button'  class='layui-btn layui-btn-mini' onclick='javascript:"+ module.getUrl()+ "' value='"+ module.getDescription()+"'/>");
 			}
 			String menu ="menu";
 			s.append("<label id='"+menu+"'></label>");
@@ -119,9 +114,9 @@ public class ManageUtils {
 	}
 	
 	
-	public synchronized static String getUploadId() {
-		Calendar c = Calendar.getInstance();
-
-		return c.getTimeInMillis() + "";
-	}
+//	public synchronized static String getUploadId() {
+//		Calendar c = Calendar.getInstance();
+//
+//		return c.getTimeInMillis() + "";
+//	}
 }

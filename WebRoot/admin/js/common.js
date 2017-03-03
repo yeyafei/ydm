@@ -4,10 +4,10 @@ $(function(){
 		submitFrom();
 	});
 	
-	$("#addButton").on('click',function(){
-		var url = $("#searchForm").attr("action").replace("list.do","edit.do");
-		window.open(url);
-	});
+	//$("#addButton").on('click',function(){
+	//	var url = $("#searchForm").attr("action").replace("list.do","edit.do");
+	//	window.open(url);
+	//});
 });
 
 function searchPage(page){
@@ -80,6 +80,56 @@ function changeTrColor(tr,xh){
 
 function skipPage(){
 	searchPage($("#currentPage").val());
+}
+
+//添加 url
+function addLOU(url) {
+	layer.open( {
+		type : 2,
+		title : false,
+		shadeClose : false,
+		shade : 0.8,
+		area : [ '600px', '500px' ],
+		content : url
+	});
+}
+
+//添加 url wight,hight
+function addLOUS(url,wight,hight) {
+	layer.open( {
+		type : 2,
+		title : false,
+		shadeClose : false,
+		shade : 0.8,
+		area : [ wight, hight  ],
+		content : url
+	});
+}
+
+//添加 title,url
+function addLOTU(title,url) {
+	layer.open( {
+		type : 2,
+		title : title,
+		shadeClose : false,
+		shade : 0.8,
+		area : [ '600px', '500px' ],
+		content : url
+	});
+}
+
+
+
+//添加  title,url,wight,hight
+function addLOTUS(title,url,wight,hight) {
+	layer.open( {
+		type : 2,
+		title : title,
+		shadeClose : false,
+		shade : 0.8,
+		area : [wight, hight ],
+		content : url
+	});
 }
 
 

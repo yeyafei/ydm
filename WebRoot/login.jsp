@@ -18,6 +18,7 @@
 		<link rel="stylesheet" type="text/css" href="admin/css/login.css" media="all">
 		<script src="admin/js/jquery-1.8.0.min.js"></script>
 		<script src="admin/js/jparticle.jquery.js"></script>
+	    <script type="text/javascript" src="/admin/layer/layer.js"></script> 
 		<script type="text/javascript">
 	$(function() {
 		$(".layui-canvs").width($(window).width());
@@ -26,6 +27,13 @@
 			background : "#666",
 			color : "#E6E6E6"
 		});
+		if ("${errormsg}"!=""){
+			layer.alert('${errormsg}', {
+				title: false,
+				icon : 0
+			});
+			return;
+			}
 	});
 </script>
 	</head>
@@ -39,18 +47,17 @@
 			</h1>
 			
 			<div class="layui-user-icon l-login">
-			<i class="layui-icon" style="font-size: 30px; color: #1E9FFF;">&#xe609;</i>
+			<i class="layui-icon" style="font-size: 31px; color: #c2c2c2;">&#xe612;</i>
 				<input type="text" name="username" placeholder="账号" class="login_txtbx" />
 			</div>
 			<div class="layui-pwd-icon l-login">
-				<i class="layui-icon" style="font-size: 30px; color: #1E9FFF;">&#xe609;</i>
+				<i class="layui-icon" style="font-size: 31px; color: #c2c2c2;">&#xe607;</i>
 				<input type="password" name="password" placeholder="密码" class="login_txtbx" />
 			</div>
 			<div class="layui-submit l-login">
-				<i class="layui-icon" style="font-size: 30px; color: #1E9FFF;">&#xe609;</i>
+				<i class="layui-icon" style="font-size: 31px; color: #c2c2c2;">&#xe609;</i>
 				<input type="submit" value="立即登陆" class="submit_btn" />
 			</div>
-				<div id="layui-submit l-login">${errormsg }</span></div>
 			</form>
 		</div>
 	</body>

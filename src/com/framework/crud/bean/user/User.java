@@ -4,6 +4,7 @@ import com.framework.base.BaseEntity;
 import com.framework.core.annotation.Code;
 import com.framework.core.annotation.Primary;
 import com.framework.core.annotation.TableName;
+import com.framework.core.annotation.TempField;
 
 /**
  * @author yyf
@@ -13,6 +14,8 @@ import com.framework.core.annotation.TableName;
 @TableName(name = "user")
 public class User extends BaseEntity {
 	private int id;
+	@TempField
+	private String ids;
 
 	/**
 	 * 用户名 /唯一
@@ -40,11 +43,6 @@ public class User extends BaseEntity {
 	 * 激活状态
 	 */
 	private String active;
-
-	/**
-	 * 最后登陆时间
-	 */
-	private String lastLogDate;
 
 	/**
 	 * 创建时间
@@ -107,13 +105,6 @@ public class User extends BaseEntity {
 		this.active = active;
 	}
 
-	public String getLastLogDate() {
-		return lastLogDate;
-	}
-
-	public void setLastLogDate(String lastLogDate) {
-		this.lastLogDate = lastLogDate;
-	}
 
 	public String getCreatDate() {
 		return creatDate;
@@ -145,11 +136,19 @@ public class User extends BaseEntity {
 		this.name = name;
 	}
 	
+	public String getIds() {
+		return ids;
+	}
+
+	public void setIds(String ids) {
+		this.ids = ids;
+	}
+
 	@Override
 	public String toString() {
 		return "User [active=" + active + ", ceratOper=" + ceratOper
 				+ ", code=" + code + ", creatDate=" + creatDate + ", id=" + id
-				+ ", lastLogDate=" + lastLogDate + ", level=" + level
+				+ ", level=" + level
 				+ ", name=" + name + ", passWord=" + passWord + ", userRole="
 				+ userRole + "]";
 	}

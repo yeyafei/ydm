@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.framework.base.BaseService;
 import com.framework.crud.bean.user.User;
 import com.framework.crud.dao.user.UserDao;
+import com.framework.util.SystemUtilities;
 
 /**
  * @author yyf
@@ -30,7 +31,7 @@ public class UserService extends BaseService<User, UserDao>{
 				tableHtml.append("<tr class='colortr' xh='"+i+"' onclick='changeTrColor(this," + i + ")'>");
 			else
 				tableHtml.append("<tr class='nocolortr' xh='"+i+"' onclick='changeTrColor(this," + i + ")'>");
-			tableHtml.append("<td>"+i+ "<input type='hidden' id='NAME" + i + "' value='" + user.getName() + "' /></td>");
+			tableHtml.append("<td>"+i+ "<input type='hidden' id='IDS" + i + "' value='" + user.getId() + "' /></td>");
 			tableHtml.append("<td>" + user.getName() + "</td>");
 			tableHtml.append("<td>" + user.getLevel() + "</td>");
 			tableHtml.append("<td>" + user.getActive() + "</td>");
@@ -50,6 +51,7 @@ public class UserService extends BaseService<User, UserDao>{
 	 */
 	public void addUser(User user) throws Exception {
 		user.setCode(baseGetCode(user));
+		user.setCreatDate(SystemUtilities.getSysDateTime());
 		baseSave(user);
 	}
 
@@ -81,5 +83,34 @@ public class UserService extends BaseService<User, UserDao>{
 	public List<User> getUser() throws Exception {
 		return baseSelectAll(new User());
 	}
+
+
+	/**
+	 * 查找username
+	 * @param name
+	 * @throws Exception 
+	 */
+	public void checkUser(User user) throws Exception {
+		User u=baseParSelect(user);
+		if(u.getId()!=0){
+			throw new Exception("用户名重复");
+		}
+		
+	}
+
+
+	/**
+	 * 通过id获取user
+	 * @param id
+	 * @return
+	 * @throws Exception 
+	 */
+	public User getUserById(String id) throws Exception {
+		User u = new User();
+		u.setId(Integer.parseInt(id));
+		return baseParSelect(u);
+	}
+
+
 
 }

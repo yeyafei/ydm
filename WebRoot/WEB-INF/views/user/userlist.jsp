@@ -6,41 +6,60 @@
 	<head>
 	<meta charset="UTF-8"/>
 		<title>用户管理</title>
-		<link rel="stylesheet" type="text/css" href="../../../admin/css/common.css"/>
-		<link rel="stylesheet" type="text/css" href="../../../admin/laypage/skin/laypage.css"/>
-		<link rel="stylesheet" type="text/css" href="../../../admin/layer/skin/layer.css"/>
-		<script type="text/javascript" src="../../../admin/js/jquery-1.8.0.min.js"></script>
-		<script type="text/javascript" src="../../../admin/js/jquery.form.js"></script>
-		<script type="text/javascript" src="../../../admin/laypage/laypage.js"></script>
-		<script type="text/javascript" src="../../../admin/layer/layer.js"></script>
-		<script type="text/javascript" src="../../../admin/js/common.js"></script>
-		
-		<link rel="stylesheet" type="text/css" href="../../../common/layui/css/layui.css" media="all">
+		<jsp:include page="../../../default.jsp" />
 	
 		<script type="text/javascript">
-		$(function(){searchPage(1);	});
+		$(function(){
+			searchPage(1);	
+		});
+		//动态控制三级菜单显示
 		function loadsub(xh){
 			$("#list_operate").show();
-			$("#name").val($("#NAME"+xh).val());
+			$("#ids").val($("#IDS"+xh).val());
 		}
-		function hideBtn(){
+		
+		function hideBtn(){ 
 			$("#list_operate").hide();
 			}
+		//添加
 		function add(){
-			alert("come on")
+			addLOUS("edit.do","600px","336px");
 			}
+		//修改
+		function upd(){
+			addLOUS("edit.do?id="+$("#ids").val(),"600px","336px");
+			}
+		//删除
+		function del() {
+			var id =$("#ids").val()
+			if (id == '') {
+				parent.layer.alert('请选择用户!', {
+					icon : 0,
+				});
+				return;
+			}
+			layer.confirm('请确定是否要删除该用户?', {
+				btn : [ '删除', '取消' ]
+			}, function() {
+				$.post("del.do", {id : id}, function(result) {
+					layer.msg(result);
+					searchPage($("#pageNum").val());
+					});
+				
+				});
+		}
 		</script>
 	</head>
 	<body>
 		<div id="bodyDiv">
 			<div class="tableDiv">
-				<fieldset>
+			<fieldset>
 					<div class="searchDiv">
 						<form id="searchForm" action="/user/list.do" method="post">
 							<input type="hidden" id="pageSize" name="pageSize" value="10"/>
 							<input type="hidden" id="pageNum" name="pageNum" value="1"/>
 							<input type="hidden" id="xh" value="" />
-							<input type="hidden" id="name" value="" />
+							<input type="hidden" id="ids" value="" />
 							<input type="hidden" id="parentid" name="parentid" value="${parentid }" />
 	 						<table class="layui-table" >
 								<tr>
@@ -71,7 +90,7 @@
 						<div id="list_table_page" style="float:right;">
 						</div>
 					</div>
-				</fieldset>
+				</fieldset>	
 			</div>
 		</div>
 	</body>

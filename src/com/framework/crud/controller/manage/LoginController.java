@@ -116,7 +116,7 @@ private ModuleService moduleService;
 	@RequestMapping("/loginout")
 	public void loginOut(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.getSession().invalidate();
-		login(response);
+		login(response,request);
 	}
 
 	/**
@@ -138,8 +138,7 @@ private ModuleService moduleService;
 	 * @throws Exception
 	 */
 	@RequestMapping("/login")
-	public void login(HttpServletResponse response) throws Exception {		
-		
+	public void login(HttpServletResponse response,HttpServletRequest request) throws Exception {		
 		response.sendRedirect("/index.jsp");
 	}
 }

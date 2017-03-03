@@ -306,9 +306,9 @@ public class ModuleController extends BaseController<Module, ModuleService> {
 			}
 			model.addAttribute("module", module);
 			model.addAttribute("ifoper", "true");
-
 			// 刷新缓存
 			refreshCache(request);
+			model.addAttribute("module", module);
 		} catch (Exception e) {
 			e.printStackTrace();
 			model.addAttribute("errormsg", "[ " + e.getMessage() + "! ]");

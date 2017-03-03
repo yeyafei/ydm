@@ -31,14 +31,11 @@
 						 sCol: '#1AA094', // 时针颜色
 						 isNumCol: '', // 数字所在的点颜色
 						 noNumCol: '', // 非数字所在的点颜色
-						 dCol: '', // 中心圈颜色
+						 dCol: '#c2c2c2', // 中心圈颜色
 					}
 			);
 		})
 		
-	function searchPage(page){
-		alert("1111")
-	}
 	</script>
 </head>
 <body>
@@ -50,7 +47,7 @@
 			<div class="admin-logo-box">
 				<a class="logo" href="" title="logo"><img src="common/images/yyf.png" alt=""></a>
 				<div class="yyf-side-menu">
-					<i class="fa fa-bars" aria-hidden="true"></i>
+				<i class="layui-icon" style="font-size: 20px; color: #FFFFFF;">&#xe603;</i>
 				</div>
 			</div>
 			
@@ -59,10 +56,10 @@
             <div class="layui-yyf-menu">
                  <ul class="layui-nav clearfix">
                        <li class="layui-nav-item layui-this">
-                 	   	   <a href="javascirpt:;"><i class="layui-icon" style="font-size: 30px; color: #1E9FFF;">&#xe609;</i>内容管理</a>
+                 	   	   <a href="https://github.com/yeyafei/ydm"><i class="layui-icon" style="font-size: 25px; color: #1E9FFF;">&#xe650;</i>GITHUB</a>
                  	   </li>
                  	   <li class="layui-nav-item">
-                 	   	   <a href="javascirpt:;"><i class="layui-icon" style="font-size: 30px; color: #1E9FFF;">&#xe609;</i>扩展模块</a>
+                 	   	   <a href="javascirpt:;"><i class="layui-icon" style="font-size: 30px; color: #1E9FFF;">&#xe62d;</i>SYSLOG</a>
                  	   </li>
                  </ul>
             </div>

@@ -160,8 +160,8 @@
 	</head>
 	<body>
 		<div>
-			<fieldset class="openWin">
-				<div class="warp">
+			<fieldset>
+				<div>
 					<form id ="moduleForm" class="layui-form" action="/module/save.do" method="POST">
 						<input type="hidden" id="id" name="ids"
 							value="${module.id eq 0 ? '' : module.id}" />

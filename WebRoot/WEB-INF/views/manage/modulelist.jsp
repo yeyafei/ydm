@@ -111,8 +111,7 @@
 		var num = $("#moduleid").val();
 		if (num == '') {
 			parent.layer.alert('请选择模块!', {
-				icon : 0,
-				skin : 'layer-ext-moon'
+				icon : 2
 			});
 			return;
 		}
@@ -260,7 +259,7 @@
 			<input type="hidden" id="icon" value=""><!-- 控制子frame菜单管理添加修改的icon回掉 -->
 			<c:if test="${menulist ne null}">
 				<div class="manage_oper">
-					<span><b>操作:</b>
+					<span><input type='button'  class='layui-btn layui-btn-mini layui-btn-warm'  value='操作:'/>
 					</span>
 					<c:forEach var="menu" items="${menulist}">
 					<input type="button"  class="layui-btn layui-btn-mini" id="${menu.code }" onclick="javascript:${menu.url }"  value="${menu.description}"/>
