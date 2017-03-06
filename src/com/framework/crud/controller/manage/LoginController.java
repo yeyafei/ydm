@@ -64,6 +64,7 @@ private ModuleService moduleService;
 			request.getSession().setAttribute("MODULES_ALL", MODULES_ALL);
 			request.getSession().removeAttribute("errormsg");
 			request.getSession().setAttribute("USER", user);
+			
 				}
 			}
 		} catch (Exception e) {
@@ -75,35 +76,35 @@ private ModuleService moduleService;
 		response.sendRedirect("/main.jsp");
 	}
 
-	/**
-	 * 根据一级菜单NUM值获取所属二级菜单
-	 * 
-	 * @param request
-	 * @param response
-	 * @param num
-	 */
-	@SuppressWarnings("unchecked")
-	@RequestMapping("/getsecmenu")
-	public void getSecMenu(HttpServletRequest request, HttpServletResponse response, String num) {
-		StringBuffer html = new StringBuffer("");
-		List<Module> MODULES = (List<Module>) request.getSession().getAttribute("MODULES");
-
-		for (int i = 0; i < MODULES.size(); i++) {
-			Module m = MODULES.get(i);
-			String url = null;
-			if (num.equals(m.getParentid())) {
-				url = m.getUrl() + "?num=" + m.getNum();
-				html.append("<a href=\"javascript:toReq('" + url + "')\" name='second' class='secondmenu'>" + m.getDescription() + "</a>&nbsp;|&nbsp;");
-			}
-		}
-
-		String result = html.toString();
-		if (result.length() > 0 && result.lastIndexOf("&nbsp;|&nbsp;") > 0) {
-			result = result.substring(0, result.lastIndexOf("&nbsp;|&nbsp;"));
-		}
-
-		ajaxHtml(result, response);
-	}
+//	/**
+//	 * 根据一级菜单NUM值获取所属二级菜单
+//	 * 
+//	 * @param request
+//	 * @param response
+//	 * @param num
+//	 */
+//	@SuppressWarnings("unchecked")
+//	@RequestMapping("/getsecmenu")
+//	public void getSecMenu(HttpServletRequest request, HttpServletResponse response, String num) {
+//		StringBuffer html = new StringBuffer("");
+//		List<Module> MODULES = (List<Module>) request.getSession().getAttribute("MODULES");
+//
+//		for (int i = 0; i < MODULES.size(); i++) {
+//			Module m = MODULES.get(i);
+//			String url = null;
+//			if (num.equals(m.getParentid())) {
+//				url = m.getUrl() + "?num=" + m.getNum();
+//				html.append("<a href=\"javascript:toReq('" + url + "')\" name='second' class='secondmenu'>" + m.getDescription() + "</a>&nbsp;|&nbsp;");
+//			}
+//		}
+//
+//		String result = html.toString();
+//		if (result.length() > 0 && result.lastIndexOf("&nbsp;|&nbsp;") > 0) {
+//			result = result.substring(0, result.lastIndexOf("&nbsp;|&nbsp;"));
+//		}
+//
+//		ajaxHtml(result, response);
+//	}
 
 
 	/**

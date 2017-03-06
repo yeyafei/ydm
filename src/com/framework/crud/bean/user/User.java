@@ -51,7 +51,7 @@ public class User extends BaseEntity {
 	/**
 	 * 创建人
 	 */
-	private String ceratOper;
+	private String ceratOper;  //拼错了.. mark
 	/**
 	 * 用户角色
 	 */

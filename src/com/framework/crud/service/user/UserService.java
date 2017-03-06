@@ -36,7 +36,7 @@ public class UserService extends BaseService<User, UserDao>{
 			tableHtml.append("<td>" + user.getLevel() + "</td>");
 			tableHtml.append("<td>" + user.getActive() + "</td>");
 			tableHtml.append("<td>" + user.getCreatDate()+ "</td>");
-			tableHtml.append("<td>" + user.getCeratOper() + "</td>");
+			tableHtml.append("<td>" + user.getCeratOper() + "</td>"); 
 			tableHtml.append("</tr>");
 		}
 		return tableHtml.toString();

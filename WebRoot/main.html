@@ -3,26 +3,83 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+	<link rel="stylesheet" type="text/css" href="common/layui/css/layui.css" media="all">
 	<script src="admin/js/jquery-1.8.0.min.js"></script>
-	<script type="text/javascript" src="admin/js/clock.js"></script>
+	<script type="text/javascript" src="common/layui/layui.js"></script> 
 	<script type="text/javascript">
-		$(function() {
-			$("#clock").drawClock(
-				{
-					 hCol: '#1AA094',// 时针颜色
-					 mCol: '#1AA094', // 时针颜色
-					 sCol: '#1AA094', // 时针颜色
-					 isNumCol: '', // 数字所在的点颜色
-					 noNumCol: '', // 非数字所在的点颜色
-					 dCol: 'red', // 中心圈颜色
-				}
-			);
-		})
+	layui.use('flow', function(){
+		  var flow = layui.flow;
+	 flow.load({
+		    elem: '#LAY_demo2' //流加载容器
+		    ,scrollElem: '#LAY_demo2' //滚动条所在元素，一般不用填，此处只是演示需要。
+		    ,isAuto: false
+		    ,isLazyimg: true
+		    ,done: function(page, next){ //加载下一页
+		      //模拟插入
+		      setTimeout(function(){
+		        var lis = [];
+		        for(var i = 0; i < 6; i++){
+		          lis.push("<li style='height: 40px'>HHHHHHHHHHHHHHHHHHHHH"+i+"</li>")
+		        }
+		        next(lis.join(''), page < 3); //假设总页数为 6
+		      }, 500);
+		    }
+		  });
+	});
+	layui.use('layedit', function(){
+		  var layedit = layui.layedit
+		  ,$ = layui.jquery;
+
+		  //自定义工具栏
+		  layedit.build('AREA', {
+		    tool: ['face', 'link', 'unlink', '|', 'left', 'center', 'right']
+		    ,height: 100
+		  })
+		  
+		  //构建一个默认的编辑器
+		//  var index = layedit.build('AREA');
+		  
+		  //编辑器外部操作
+		  var active = {
+		    content: function(){
+		      alert(layedit.getContent(index)); //获取编辑器内容
+		    }
+		    ,text: function(){
+		      alert(layedit.getText(index)); //获取编辑器纯文本内容
+		    }
+		    ,selection: function(){
+		      alert(layedit.getSelection(index));
+		    }
+		  };
+		  
+		  $('.site-demo-layedit').on('click', function(){
+		    var type = $(this).data('type');
+		    active[type] ? active[type].call(this) : '';
+		  });
+		  
+
+		});
 	</script>
 </head>
 <body>
-	<div >
-		<canvas id="clock" width="100" height="100"></canvas>
-	</div>
+ 
+<ul class="flow-default" style="width: 500px ;height: 300px;" id="LAY_demo2">
+</ul>
+
+ 
+
+ 
+<div style="margin-bottom: 20px; width: 500px;">
+  <textarea class="layui-textarea" id="AREA" style="display: none">
+    把编辑器的初始内容放在这textarea即可
+    </textarea>
+</div> 
+	
+<div class="site-demo-button" style="margin-top: 20px;">
+  <button class="layui-btn site-demo-layedit" data-type="content">获取编辑器内容</button>
+  <button class="layui-btn site-demo-layedit" data-type="text">获取编辑器纯文本内容</button>
+  <button class="layui-btn site-demo-layedit" data-type="selection">获取编辑器选中内容</button>
+</div>
+	
 </body>
 </html>

@@ -85,7 +85,7 @@
 		<!-- 左侧菜单 -->
 		<ul class="layui-nav layui-nav-tree">
 			<li class="layui-nav-item layui-this">
-				<a href="javascript:;" data-url="main.html">
+				<a href="javascript:;" data-url="notice/viewnoticelist.do">
 				    <i class="layui-icon" style="font-size: 30px; color: #1E9FFF;">&#xe609;</i>
 					<span>后台首页</span>
 				</a>
@@ -123,7 +123,7 @@
 			</ul>
 			<div class="layui-tab-content" style="min-height: 150px; ">
 				<div class="layui-tab-item layui-show">
-					<iframe class="yyf-iframe" id="iframe" name ="iframeName" "data-id='0' src="main.html"></iframe>
+					<iframe class="yyf-iframe" id="iframe" name ="iframeName" "data-id='0' src="notice/viewnoticelist.do"></iframe>
 				</div>
 			</div>
 		</div>
