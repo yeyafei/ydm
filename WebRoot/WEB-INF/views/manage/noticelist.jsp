@@ -69,7 +69,7 @@
 		</script>
 	</head>
 	<body>
-		<div id="bodyDiv">
+		<div>
 			<div class="tableDiv">
 					<div>
 						<form id="searchForm" action="/notice/list.do" method="post">
@@ -93,7 +93,7 @@
 				</fieldset>	
 			</div>
 			<fieldset>
-			<div style="margin-bottom: 20px; width: 1171px;">
+			<div style="margin-bottom: 20px; width: ">
 			<form class="layui-form" action="">
 			  <div class="layui-form-item">
       		<input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">

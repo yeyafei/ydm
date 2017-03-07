@@ -132,28 +132,3 @@ function addLOTUS(title,url,wight,hight) {
 	});
 }
 
-
-
-function getCuName(num){
-	$("#whichCu").val(num);
-	parent.layer.open({
-	  type: 2,
-	  title: '选择客户信息',
-	  shadeClose: true,
-	  shade: 0.8,
-	  area: ['80%', '65%'],
-	  content: '/customer/culist.do'
-	}); 
-}
-
-function getAddCuName(num){
-	$("#whichCu").val(num);
-	layer.open({
-	  type: 2,
-	  title: '选择客户信息',
-	  shadeClose: true,
-	  shade: 0.8,
-	  area: ['80%', '65%'],
-	  content: '/customer/culist.do'
-	}); 
-}

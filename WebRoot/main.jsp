@@ -35,6 +35,16 @@
 					}
 			);
 		})
+		function notice(){
+			layer.open( {
+				type : 2,
+				title : '公告',
+				shadeClose : false,
+				shade : 0.8,
+				area : ['1200px', '680px' ],
+				content : 'notice/viewnoticelist.do'
+			});
+			}
 		
 	</script>
 </head>
@@ -59,7 +69,7 @@
                  	   	   <a href="https://github.com/yeyafei/ydm"><i class="layui-icon" style="font-size: 25px; color: #1E9FFF;">&#xe650;</i>GITHUB</a>
                  	   </li>
                  	   <li class="layui-nav-item">
-                 	   	   <a href="javascirpt:;"><i class="layui-icon" style="font-size: 30px; color: #1E9FFF;">&#xe62d;</i>SYSLOG</a>
+                 	   	   <a href="javascirpt:;" onclick="notice()" ><i class="layui-icon" style="font-size: 30px; color: #1E9FFF;">&#xe62d;</i>公告</a>
                  	   </li>
                  </ul>
             </div>
@@ -85,7 +95,7 @@
 		<!-- 左侧菜单 -->
 		<ul class="layui-nav layui-nav-tree">
 			<li class="layui-nav-item layui-this">
-				<a href="javascript:;" data-url="notice/viewnoticelist.do">
+				<a href="javascript:;" data-url="main.html">
 				    <i class="layui-icon" style="font-size: 30px; color: #1E9FFF;">&#xe609;</i>
 					<span>后台首页</span>
 				</a>
@@ -123,7 +133,7 @@
 			</ul>
 			<div class="layui-tab-content" style="min-height: 150px; ">
 				<div class="layui-tab-item layui-show">
-					<iframe class="yyf-iframe" id="iframe" name ="iframeName" "data-id='0' src="notice/viewnoticelist.do"></iframe>
+					<iframe class="yyf-iframe" id="iframe" name ="iframeName" "data-id='0' src="main.html"></iframe>
 				</div>
 			</div>
 		</div>
